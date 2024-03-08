@@ -8,6 +8,8 @@ router.get('/', asyncHandler(async (req,res) => {
   res.json(products);
 }));
 
+
+
 router.get(
   '/:id',
   asyncHandler(async(req,res) => {
