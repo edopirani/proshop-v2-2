@@ -5,15 +5,11 @@ const initialState = localStorage.getItem('cart')
   ? JSON.parse(localStorage.getItem('cart'))
   : { cartItems: [], shippingAddress: {}, paymentMethod: 'PayPal' };
 
-const addDecimals = (num) => {
-  return (Math.round(num * 100) / 100).toFixed(2)
-}
-
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-      addToCart: (state, action) => {
+    addToCart: (state, action) => {
       // NOTE: we don't need user, rating, numReviews or reviews
       // in the cart
       const { user, rating, numReviews, reviews, ...item } = action.payload;
@@ -36,8 +32,7 @@ const cartSlice = createSlice({
     },
     saveShippingAddress: (state, action) => {
       state.shippingAddress = action.payload;
-      return updateCart(state);
-      //      localStorage.setItem('cart', JSON.stringify(state));
+      localStorage.setItem('cart', JSON.stringify(state));
     },
     savePaymentMethod: (state, action) => {
       state.paymentMethod = action.payload;
@@ -51,8 +46,7 @@ const cartSlice = createSlice({
     // user doesn't inherit the previous users cart and shipping
     resetCart: (state) => (state = initialState),
   },
-}
-);
+});
 
 export const {
   addToCart,

@@ -32,7 +32,6 @@ const LoginScreen = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
- //   console.log('submit')
     try {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials({ ...res }));
@@ -56,6 +55,7 @@ const LoginScreen = () => {
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
+
         <Form.Group className='my-2' controlId='password'>
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -75,11 +75,10 @@ const LoginScreen = () => {
 
       <Row className='py-3'>
         <Col>
-        New Customer?{' '}
+          New Customer?{' '}
           <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
-          Register
+            Register
           </Link>
-        
         </Col>
       </Row>
     </FormContainer>

@@ -9,7 +9,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: data,
       }),
-     }),
+    }),
     register: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}`,
@@ -58,7 +58,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: ['User'],
     }),
   }),
-})
+});
 
 export const {
   useLoginMutation,
